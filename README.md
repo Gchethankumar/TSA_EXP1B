@@ -2,18 +2,21 @@
 ## Date: 
 
 ### AIM:
-To perform regular differncing,seasonal adjustment and log transformatio on international airline passenger data
+To perform regular differncing,seasonal adjustment and log transformatio on international airline passenger data.
+
 ### ALGORITHM:
 1. Import the required packages like pandas and numpy
 2. Read the data using the pandas
 3. Perform the data preprocessing if needed and apply regular differncing,seasonal adjustment,log transformation.
 4. Plot the data according to need, before and after regular differncing,seasonal adjustment,log transformation.
 5. Display the overall results.
+   
 ### PROGRAM:
 ```
 Developed By : G.Chethan kumar
 Register no. : 212222240022
 ```
+
 <b>IMPORTING PACKAGES:</b>
 ```python
 import pandas as pd
@@ -24,6 +27,7 @@ train = pd.read_csv('Electric_Production.csv')
 train['DATE'] = pd.to_datetime(train['DATE'], format='%d/%m/%Y')
 train.head()
 ```
+
 <b>REGULAR DIFFERENCING:</b>
 ```python
 from statsmodels.tsa.stattools import adfuller
@@ -39,6 +43,7 @@ adf_test(train['IPG2211A2N'])
 train['DATE'] = pd.to_datetime(train['DATE'], format='%d/%m/%Y')
 train['Year'] = train['DATE'].dt.year
 ```
+
 <b>SEASONAL ADJUSTMENT:</b>
 ```python
 data=train
@@ -52,6 +57,7 @@ plt.xlabel("<-----Year---->",color='blue')
 plt.ylabel("<-----Usage---->",color='red')
 plt.show()
 ```
+
 <b>LOG TRANSFORMATION:</b>
 ```python
 data1=train
@@ -62,6 +68,7 @@ y=data1['log']
 plt.xlabel('Year',color='blue')
 plt.ylabel('Log Values',color='red')
 ```
+
 ### OUTPUT:
 
 #### REGULAR DIFFERENCING:
