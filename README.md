@@ -72,18 +72,13 @@ plt.ylabel('Log Values',color='red')
 ### OUTPUT:
 
 #### REGULAR DIFFERENCING:
-
 ![img5](https://github.com/user-attachments/assets/dd85b521-bc77-4257-a39d-437970c72ea7)
 
 <b>SEASONAL ADJUSTMENT:</b>
-
 ![img6](https://github.com/user-attachments/assets/61d074ad-f5db-4c1f-82fe-40d275bfaf81)
 
-
 <b>LOG TRANSFORMATION:</b>
-
 ![img7](https://github.com/user-attachments/assets/d78e4497-0eaf-4b40-843c-69afafb7a304)
-
 
 ### RESULT:
 Thus we have created the python code for the conversion of non stationary to stationary data on international airline passenger data.
