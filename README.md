@@ -11,7 +11,7 @@ To perform regular differncing,seasonal adjustment and log transformatio on inte
 5. Display the overall results.
 ### PROGRAM:
 ```
-Developed By : G. Chethan kumar
+Developed By : G.Chethan kumar
 Register no. : 212222240022
 ```
 <b>IMPORTING PACKAGES:</b>
