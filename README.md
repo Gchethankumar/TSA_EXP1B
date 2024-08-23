@@ -1,5 +1,9 @@
+
+#### Developed By : G.Chethan kumar
+#### Register no. : 212222240022
+#### Date: 
+
 # Ex.No: 1B                     CONVERSION OF NON STATIONARY TO STATIONARY DATA
-## Date: 
 
 ### AIM:
 To perform regular differncing,seasonal adjustment and log transformatio on international airline passenger data.
@@ -12,10 +16,6 @@ To perform regular differncing,seasonal adjustment and log transformatio on inte
 5. Display the overall results.
    
 ### PROGRAM:
-```
-Developed By : G.Chethan kumar
-Register no. : 212222240022
-```
 
 <b>IMPORTING PACKAGES:</b>
 ```python
