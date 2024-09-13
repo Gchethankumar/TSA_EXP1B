@@ -73,15 +73,15 @@ ORIGINAL DATA:
 
 REGULAR DIFFERENCING:
 
-![Uploading Screenshot 2024-09-13 091508.png…]()
+![Screenshot 2024-09-13 091508](https://github.com/user-attachments/assets/ef61662e-2c50-4a63-899a-a87bf4bdedb4)
 
 SEASONAL ADJUSTMENT:
 
-![Uploading Screenshot 2024-09-13 091515.png…]()
+![Screenshot 2024-09-13 091515](https://github.com/user-attachments/assets/6155fbff-7174-4768-956b-5ead470cc4a6)
 
 LOG TRANSFORMATION:
 
-![Uploading Screenshot 2024-09-13 091522.png…]()
+![Screenshot 2024-09-13 091522](https://github.com/user-attachments/assets/c773dadc-697d-45fb-b8b0-2bf6e60d67be)
 
 
 ### RESULT:
