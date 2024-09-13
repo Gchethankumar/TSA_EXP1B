@@ -16,72 +16,73 @@ To perform regular differncing,seasonal adjustment and log transformatio on inte
 5. Display the overall results.
    
 ### PROGRAM:
-
-<b>IMPORTING PACKAGES:</b>
 ```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-%matplotlib inline
-train = pd.read_csv('Electric_Production.csv')
-train['DATE'] = pd.to_datetime(train['DATE'], format='%d/%m/%Y')
-train.head()
-```
 
-<b>REGULAR DIFFERENCING:</b>
-```python
-from statsmodels.tsa.stattools import adfuller
-def adf_test(timeseries):
-    print ('Results of Dickey-Fuller Test:')
-    dftest = adfuller(timeseries, autolag='AIC')
-    dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used'
-               ,'Number of Observations Used'])
-    for key,value in dftest[4].items():
-       dfoutput['Critical Value (%s)'%key] = value
-    print (dfoutput)
-adf_test(train['IPG2211A2N'])
-train['DATE'] = pd.to_datetime(train['DATE'], format='%d/%m/%Y')
-train['Year'] = train['DATE'].dt.year
-```
+### Load the data
+data = pd.read_csv('india-gdp.csv',nrows=100)
 
-<b>SEASONAL ADJUSTMENT:</b>
-```python
-data=train
-data['SeasonalAdjustment'] = data.iloc[:,1] - data.iloc[:,1].shift(12)
-data['SeasonalAdjustment'].dropna()
-x=data['Year']
-y=data["SeasonalAdjustment"]
-plt.plot(x,y,color='black')
-plt.title("ElectroGraph")
-plt.xlabel("<-----Year---->",color='blue')
-plt.ylabel("<-----Usage---->",color='red')
-plt.show()
-```
+### Convert 'date' to datetime format
+data['date'] = pd.to_datetime(data['date'], format='%d-%m-%Y')
 
-<b>LOG TRANSFORMATION:</b>
-```python
-data1=train
-data1['log']=np.log(data1['IPG2211A2N_diff']).dropna()
-data1=data1.dropna()
-x=data1['Year']
-y=data1['log']
-plt.xlabel('Year',color='blue')
-plt.ylabel('Log Values',color='red')
+### Group by date and calculate the average money spent per day
+daily_average = data.groupby('date')['AnnualChange'].mean().reset_index()
+### Log transformation
+daily_average['Log_Change'] = np.log(daily_average['AnnualChange'])
+
+### Regular differencing
+daily_average['Diff_Log_Change'] = daily_average['Log_Change'].diff()
+
+### Seasonal differencing (assuming daily data with weekly seasonality, period=7)
+daily_average['Seasonal_Diff_Log_Change'] = daily_average['Log_Change'].diff(7)
+
+### Plotting
+plt.figure(figsize=(14, 12))
+
+### Original data
+plt.subplot(4, 1, 1)
+plt.plot(daily_average['date'], daily_average['AnnualChange'], label='Original')
+plt.title('Original Data')
+plt.ylabel('Average Annual % Change')
+plt.grid()
+
+### Log transformed data
+plt.subplot(4, 1, 2)
+plt.plot(daily_average['date'], daily_average['Log_Change'], label='Log Transformed', color='orange')
+plt.title('Log Transformed Data')
+plt.ylabel('Log(Average Annual % Change)')
+plt.grid()
+
+### Regular differenced data
+plt.subplot(4, 1, 3)
+plt.plot(daily_average['date'], daily_average['Diff_Log_Change'], label='Differenced', color='green')
+plt.title('Differenced Log Data')
+plt.ylabel('Diff(Log(Average Annual % Change))')
+plt.grid()
 ```
 
 ### OUTPUT:
 
 #### REGULAR DIFFERENCING:
 
-![img5](https://github.com/user-attachments/assets/dd85b521-bc77-4257-a39d-437970c72ea7)
+ORIGINAL DATA: 
 
-<b>SEASONAL ADJUSTMENT:</b>
+![Screenshot 2024-09-13 091459](https://github.com/user-attachments/assets/efc79121-2330-4bc1-9753-a2452fe3bd91)
 
-![img6](https://github.com/user-attachments/assets/61d074ad-f5db-4c1f-82fe-40d275bfaf81)
+REGULAR DIFFERENCING:
 
-<b>LOG TRANSFORMATION:</b>
+![Uploading Screenshot 2024-09-13 091508.png…]()
 
-![img7](https://github.com/user-attachments/assets/d78e4497-0eaf-4b40-843c-69afafb7a304)
+SEASONAL ADJUSTMENT:
+
+![Uploading Screenshot 2024-09-13 091515.png…]()
+
+LOG TRANSFORMATION:
+
+![Uploading Screenshot 2024-09-13 091522.png…]()
+
 
 ### RESULT:
 Thus we have created the python code for the conversion of non stationary to stationary data on international airline passenger data.
