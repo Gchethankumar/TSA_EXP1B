@@ -6,7 +6,7 @@
 # Ex.No: 1B                     CONVERSION OF NON STATIONARY TO STATIONARY DATA
 
 ### AIM:
-To perform regular differncing,seasonal adjustment and log transformatio on international airline passenger data.
+To perform regular differncing,seasonal adjustment and log transformatio on india's GDP data.
 
 ### ALGORITHM:
 1. Import the required packages like pandas and numpy
@@ -85,4 +85,4 @@ LOG TRANSFORMATION:
 
 
 ### RESULT:
-Thus we have created the python code for the conversion of non stationary to stationary data on international airline passenger data.
+Thus we have created the python code for the conversion of non stationary to stationary data on india's GDP data.
